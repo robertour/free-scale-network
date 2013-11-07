@@ -43,5 +43,19 @@ class FreeScaleNetwork(object):
             probabilities[n] = i / total
         return probabilities
 
+    def nodes_to_csv(self, filename):
+        with open(filename, 'w') as csvfile:
+            writer = csv.writer(csvfile)
+            writer.writerow(["Id"])
+            for i in range(1, self.nodes + 1):
+                writer.writerow([i])
+
+    def edges_to_csv(self, filename):
+        with open(filename, 'w') as csvfile:
+            writer = csv.writer(csvfile)
+            writer.writerow(["Source", "Targe"])
+            for edge in self.edges:
+                writer.writerow([edge[0], edge[1]])
+
     def __str__(self):
         return 'Nodes: {0}\nEdges: {1}'.format(self.nodes, self.edges)
