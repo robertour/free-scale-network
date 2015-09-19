@@ -94,3 +94,13 @@ class FreeScaleNetwork(object):
 
     def __str__(self):
         return 'Nodes: {0}\nEdges: {1}'.format(self.nodes, self.edges)
+    
+    def draw_other(self):
+        graph = nx.Graph()
+
+        self.add_nodes_and_edges(graph)
+
+        pos = nx.spectral_layout(graph)
+        nx.draw(graph, pos)
+
+        plt.show()
